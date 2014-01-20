@@ -8,7 +8,7 @@ Used for printing raw bits from a memory location.
 
 print_bits(...)
 ---------------
-	unsigned int print_bits(void\* in_ptr, unsigned int in_bytes);
+	unsigned int print_bits(void* in_ptr, unsigned int in_bytes);
 
 ### DESCRIPTION:
 * Prints raw bits from IN_PTR for IN_BYTES.
@@ -24,7 +24,7 @@ print_bits(...)
 
 fetch_byte(...)
 ---------------
-	unsigned int fetch_byte(void\* in_ptr, unsigned int byte_offset);
+	unsigned int fetch_byte(void* in_ptr, unsigned int byte_offset);
 
 ### DESCRIPTION:
 * Returns a single byte from IN_PTR plus BYTE_OFFSET.
