@@ -4,15 +4,14 @@ bitprint
 Raw bit printing and fetching functions
 
 
+print_bits(...)
+---------------
 
-NAME:
-	print_bits(...)
-
-DESCRIPTION:
+### DESCRIPTION:
 	Prints raw bits from IN_PTR for IN_BYTES.
 	Returns number of bytes printed.
 
-APPLICATION NOTES:
+### APPLICATION NOTES:
 	IN_BYTES is often the size of IN_PTR in bytes.
 	This is useful for debugging and learning your architecture.
 	Check bitprint.h for printing options.
@@ -20,13 +19,13 @@ APPLICATION NOTES:
 
 
 
-NAME:
-	fetch_byte(...)
+fetch_byte(...)
+---------------
 
-DESCRIPTION:
+### DESCRIPTION:
 	Returns a single byte from IN_PTR plus BYTE_OFFSET.
 
-APPLICATION NOTES:
+### APPLICATION NOTES:
 	This make getting specific bytes a bit easier.
 	This is useful for when the system does not support printing.
 	This function is unsafe. (raw bits and "safe code" don't belong together) 

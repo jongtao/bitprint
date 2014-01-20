@@ -46,22 +46,27 @@ unsigned int print_bits(void* in_ptr, unsigned int in_bytes)
 
 	for(i = 0; i < in_bytes; i++)
 	{
-		if(!HEX_MODE) compare = (char)0x80;
 
 		if(!(i && i%total_width))
 			printf("%d:\t", i); /*print byte number*/
 
-		for(j = 0; (j < 8) && !HEX_MODE; j++)
+		if(!HEX_MODE)
 		{
-			if(*(char*)in_ptr & compare) /*pull out bits one by one from left*/
-				putchar(ONE);
-			else
-				putchar(ZERO);
+			compare = (char)0x80;
 
-			compare = (compare >> 1) & 0x7F; /*get rid of sign extension*/
-		} /* for each bit in a byte*/
+			for(j = 0; (j < 8) && !HEX_MODE; j++)
+			{
+				if(*(char*)in_ptr & compare) /*pull out bits one by one from left*/
+					putchar(ONE);
+				else
+					putchar(ZERO);
 
-		if(HEX_MODE) printf("%02x", (unsigned int)*(char*)in_ptr & 0xFF);
+				compare = (compare >> 1) & 0x7F; /*get rid of sign extension*/
+			} /* for each bit in a byte*/
+		}/* if binary mode*/
+		else
+			printf("%02x", (unsigned int)*(char*)in_ptr & 0xFF);
+
 		(i+1)%total_width ? putchar(SPACER): putchar('\n');
 		in_ptr = (char*)in_ptr + 1;
 	} /* for in_bytes*/
