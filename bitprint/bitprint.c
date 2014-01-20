@@ -46,7 +46,6 @@ unsigned int print_bits(void* in_ptr, unsigned int in_bytes)
 
 	for(i = 0; i < in_bytes; i++)
 	{
-
 		if(!(i && i%total_width))
 			printf("%d:\t", i); /*print byte number*/
 
