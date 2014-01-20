@@ -23,7 +23,7 @@ DESCRIPTION:
 	Returns a single byte from IN_PTR plus BYTE_OFFSET.
 
 APPLICATION NOTES:
-	This make getting specific bytes a bit easier.
+	This makes getting specific bytes a bit easier.
 	This is useful for when the system does not support printing.
 	This function is unsafe. (raw bits and "safe code" don't belong together) 
 */
@@ -46,24 +46,22 @@ unsigned int print_bits(void* in_ptr, unsigned int in_bytes)
 
 	for(i = 0; i < in_bytes; i++)
 	{
-		compare = (char)0x80;
+		if(!HEX_MODE) compare = (char)0x80;
 
 		if(!(i && i%total_width))
 			printf("%d:\t", i); /*print byte number*/
 
-		for(j = 0; 8 - j; j++)
+		for(j = 0; (j < 8) && !HEX_MODE; j++)
 		{
 			if(*(char*)in_ptr & compare) /*pull out bits one by one from left*/
-			{
-				if(!HEX_MODE) putchar(ONE);
-			} /* if 1 bit */
+				putchar(ONE);
 			else
-				if(!HEX_MODE) putchar(ZERO);
+				putchar(ZERO);
 
 			compare = (compare >> 1) & 0x7F; /*get rid of sign extension*/
 		} /* for each bit in a byte*/
 
-		printf("0x%02x", (unsigned int)*(char*)in_ptr & 0xFF);
+		if(HEX_MODE) printf("%02x", (unsigned int)*(char*)in_ptr & 0xFF);
 		(i+1)%total_width ? putchar(SPACER): putchar('\n');
 		in_ptr = (char*)in_ptr + 1;
 	} /* for in_bytes*/
