@@ -53,7 +53,7 @@ unsigned int print_bits(void* in_ptr, unsigned int in_bytes)
 		{
 			compare = (char)0x80;
 
-			for(j = 0; (j < 8) && !HEX_MODE; j++)
+			for(j = 0; j < 8; j++)
 			{
 				if(*(char*)in_ptr & compare) /*pull out bits one by one from left*/
 					putchar(ONE);
