@@ -24,6 +24,8 @@ struct datatypes
 
 int main()
 {
+	unsigned int third_byte, num_bytes; 
+
 	struct datatypes testing = 
 	{
 		1,
@@ -35,9 +37,6 @@ int main()
 		1,
 		(void*)1
 	};
-
-
-	unsigned int third_byte, num_bytes; 
 
 	num_bytes = print_bits(&testing, sizeof(testing));
 	third_byte = fetch_byte(&testing, 2);

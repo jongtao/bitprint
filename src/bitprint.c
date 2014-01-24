@@ -37,7 +37,7 @@ APPLICATION NOTES:
 unsigned int print_bits(void* in_ptr, unsigned int in_bytes)
 {
 	/*width in bytes (varies with architecture)*/
-	unsigned int total_width = sizeof(char*);
+	unsigned int total_width = sizeof(void*);
 	unsigned int i, j;
 	char compare;
 
